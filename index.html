@@ -158,56 +158,66 @@
     </script>
 
 <script>
-const admin = document.getElementById("dropdown")
-const loggContext = document.getElementById("logger")
-
-
-
-const updateUserUi = (user) => {
-        if (user && user.name) {
-            if (user.isAdmin === true) {
-                admin.innerHTML = `
-        <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
-                <div id="dropdown-menu" class="dropdown-content">
-                    <a href="administrator.html">Dashboard</a>
-                </div>`
+    const admin = document.getElementById("dropdown")
+    const loggContext = document.getElementById("logger")
+    
+    
+    
+    const updateUserUi = (user) => {
+            if (user && user.name) {
+                if (user.isAdmin === true) {
+                    admin.innerHTML = `
+            <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
+                    <div id="dropdown-menu" class="dropdown-content">
+                        <a href="">Dashboard</a>
+                    </div>`
+                } else {
+                    admin.innerHTML = '';
+                }
+                  loggContext.innerHTML = ` 
+        <a href="https://portfolio-backend-xewv.onrender.com/logout" id="logout" class="login_button">Logout</a>
+        `
             } else {
-                admin.innerHTML = '';
+                loggContext.innerHTML = `
+        <a href="login.html" id="login-btn" class="login_button">Login</a>
+    
+        `
+                admin.innerHTML = ''; 
             }
-              loggContext.innerHTML = ` 
-    <a href="/logout" id="logout" class="login_button">Logout</a>
-    `
-        } else {
-            loggContext.innerHTML = `
-    <a href="login.html" id="login-btn" class="login_button">Login</a>
-
-    `
-            admin.innerHTML = ''; 
-        }
-    };
-
- fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
- console.log(user)
- .then(res => res.json())
- .then(data => {updateUserUi(data)})
- .catch(error => console.log(error))
-
- document.addEventListener('click', async (e) => {
-        if (e.target.id === 'logout') {
-            e.preventDefault();
-            try {
-                await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
-                    method: 'POST', 
-                    credentials: 'include' 
-                });
-                updateUserUi(null); 
-                location.assign('login.html')
-            } catch (error) {
-                console.error('Error logging out:', error);
+        };
+    
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+     .then(res => res.json())
+     .then(data => {updateUserUi(data)})
+     .catch(error => console.log(error))
+    
+     document.addEventListener('click', async (e) => {
+            if (e.target.id === 'logout') {
+                e.preventDefault();
+                try {
+                    await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
+                        method: 'POST', 
+                        credentials: 'include' 
+                    });
+                    updateUserUi(null); 
+                    location.assign('/loggin')
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                }
             }
+        });  
+    
+        // Function to get cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split(";")
+                .map(cookie => cookie.trim().split("="))
+                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+            return cookies[name];
         }
-    });
-
-
-</script>
+    
+    
+    
+    
+    </script>
+    
 

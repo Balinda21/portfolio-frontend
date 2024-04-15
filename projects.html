@@ -126,7 +126,7 @@
                     admin.innerHTML = `
             <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
                     <div id="dropdown-menu" class="dropdown-content">
-                        <a href="/administrator">Dashboard</a>
+                        <a href="">Dashboard</a>
                     </div>`
                 } else {
                     admin.innerHTML = '';
@@ -157,7 +157,7 @@
                         credentials: 'include' 
                     });
                     updateUserUi(null); 
-                    location.assign('login.html')
+                    location.assign('/loggin')
                 } catch (error) {
                     console.error('Error logging out:', error);
                 }

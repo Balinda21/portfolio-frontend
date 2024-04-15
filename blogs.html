@@ -108,17 +108,17 @@
                     admin.innerHTML = `
             <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
                     <div id="dropdown-menu" class="dropdown-content">
-                        <a href="/administrator">Dashboard</a>
+                        <a href="">Dashboard</a>
                     </div>`
                 } else {
                     admin.innerHTML = '';
                 }
                   loggContext.innerHTML = ` 
-        <a href="/logout" id="logout" class="login_button">Logout</a>
+        <a href="https://portfolio-backend-xewv.onrender.com/logout" id="logout" class="login_button">Logout</a>
         `
             } else {
                 loggContext.innerHTML = `
-        <a href="/loggin" id="login-btn" class="login_button">Login</a>
+        <a href="login.html" id="login-btn" class="login_button">Login</a>
     
         `
                 admin.innerHTML = ''; 
@@ -134,7 +134,7 @@
             if (e.target.id === 'logout') {
                 e.preventDefault();
                 try {
-                    await fetch('/logout', {
+                    await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
                         method: 'POST', 
                         credentials: 'include' 
                     });
