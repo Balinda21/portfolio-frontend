@@ -187,6 +187,7 @@
         };
     
      fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+
      .then(res => res.json())
      .then(data => {updateUserUi(data)})
      .catch(error => console.log(error))
@@ -207,14 +208,7 @@
             }
         });  
     
-        // Function to get cookie by name
-        function getCookie(name) {
-            const cookies = document.cookie.split(";")
-                .map(cookie => cookie.trim().split("="))
-                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-            return cookies[name];
-        }
-    
+   
     
     
     
