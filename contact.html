@@ -112,7 +112,7 @@
     
 
             if(data){
-              fetch('/submit-contact-form', {
+              fetch('https://portfolio-backend-xewv.onrender.com/submit-contact-form', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
@@ -184,7 +184,7 @@
             if (e.target.id === 'logout') {
                 e.preventDefault();
                 try {
-                    await fetch('/logout', {
+                    await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
                         method: 'POST', 
                         credentials: 'include' 
                     });
