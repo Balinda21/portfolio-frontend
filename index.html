@@ -18,14 +18,14 @@
               <span class="far">Mau</span>rice.
             </h3>
             <nav class="nav">   
-                <a href="./index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="projects.html">Projects</a>
-                <a href="blogs.html">Blog</a>
-                <a href="contact.html">Contact</a>
-                 <div class="dropdown" id="dropdown" > 
-              </div>
-              </nav> 
+      <a href="./index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blogs.html">Blog</a>
+      <a href="contact.html">Contact</a>
+       <div class="dropdown" id="dropdown" > 
+    </div>
+    </nav> 
             <div id="logger">
                 
             </div>         
@@ -44,7 +44,7 @@
     developer from Rwanda.</h3>
     <div class="hero-btns">
         <button class="hire-btn">Hire me</button>
-        <a href="projects.html"><button class="portfolio-btn">Portfolio</button></a>
+        <a href="/projecter"><button class="portfolio-btn">Portfolio</button></a>
     </div>
     <div class="socials">
         <i class="fa-solid fa-basketball"></i>
@@ -169,7 +169,7 @@ const updateUserUi = (user) => {
                 admin.innerHTML = `
         <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
                 <div id="dropdown-menu" class="dropdown-content">
-                    <a href="admindashboard.html">Dashboard</a>
+                    <a href="/administrator">Dashboard</a>
                 </div>`
             } else {
                 admin.innerHTML = '';
@@ -179,7 +179,7 @@ const updateUserUi = (user) => {
     `
         } else {
             loggContext.innerHTML = `
-    <a href="login.html" id="login-btn" class="login_button">Login</a>
+    <a href="/loggin" id="login-btn" class="login_button">Login</a>
 
     `
             admin.innerHTML = ''; 
@@ -195,12 +195,12 @@ const updateUserUi = (user) => {
         if (e.target.id === 'logout') {
             e.preventDefault();
             try {
-                await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
+                await fetch('/logout', {
                     method: 'POST', 
                     credentials: 'include' 
                 });
                 updateUserUi(null); 
-                location.assign('login.html')
+                location.assign('/loggin')
             } catch (error) {
                 console.error('Error logging out:', error);
             }
