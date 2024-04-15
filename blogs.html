@@ -68,7 +68,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
             // Fetch blog data from backend
-            const response = await fetch('https://portfolio-backend-cy9p.onrender.com/api/get/blogs');
+            const response = await fetch('https://portfolio-backend-xewv.onrender.com/api/get/blogs');
             const blogs = await response.json();
             
             // Get the container for blog cards
@@ -125,7 +125,7 @@
             }
         };
     
-     fetch('http://localhost:3000/api/user', {credentials:"include"})
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
      .then(res => res.json())
      .then(data => {updateUserUi(data)})
      .catch(error => console.log(error))

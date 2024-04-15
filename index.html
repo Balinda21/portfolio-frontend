@@ -179,7 +179,7 @@ const updateUserUi = (user) => {
     `
         } else {
             loggContext.innerHTML = `
-    <a href="/loggin" id="login-btn" class="login_button">Login</a>
+    <a href="login.html" id="login-btn" class="login_button">Login</a>
 
     `
             admin.innerHTML = ''; 
@@ -187,6 +187,7 @@ const updateUserUi = (user) => {
     };
 
  fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+ console.log(user)
  .then(res => res.json())
  .then(data => {updateUserUi(data)})
  .catch(error => console.log(error))
