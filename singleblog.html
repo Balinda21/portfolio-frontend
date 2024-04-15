@@ -231,7 +231,7 @@
     
                 if (commentText !== "") {
                     try {
-                        const response = await fetch("/api/user", { credentials: "include" });
+                        const response = await fetch("https://portfolio-backend-xewv.onrender.com/api/user", { credentials: "include" });
                         const user = await response.json();
                         console.log(user)
                         if (user && user.name) {

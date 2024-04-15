@@ -85,7 +85,7 @@
                         <h2>${blog.title}</h2>
                         <span class="card-date">${blog.date}</span>
                         <p>${blog.description}</p>
-                        <a href="/singleblog/${blog._id}" class="read-more">Read More</a>
+                        <a href="singleblog.html/${blog._id}" class="read-more">Read More</a>
                     </div>
                 `;
                 blogCard.innerHTML = cardContent;
@@ -139,20 +139,12 @@
                         credentials: 'include' 
                     });
                     updateUserUi(null); 
-                    location.assign('/loggin')
+                    location.assign('login.html')
                 } catch (error) {
                     console.error('Error logging out:', error);
                 }
             }
         });  
-    
-        // Function to get cookie by name
-        function getCookie(name) {
-            const cookies = document.cookie.split(";")
-                .map(cookie => cookie.trim().split("="))
-                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-            return cookies[name];
-        }
     
     
     
