@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects page</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="./assets/CSS/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div>
+        <header>
+            <h3 class="farmie">
+              <span class="far">Mau</span>rice.
+            </h3>
+            <nav class="nav">   
+                <a href="./index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                 <div class="dropdown" id="dropdown" > 
+              </div>
+              </nav>      
+            <div id="logger">
+                
+            </div>         
+            <button id="nav-toggle" class="nav-btn">
+              <i class="fa fa-bars"></i>
+            </button>
+
+           
+            
+          </header>
+      </div>
+      </div>
+      <!--Hero section-->
+      <div class="hero_section">      
+     <h3>PROJECTS</h3>
+   
+   
+      </div>
+<div class="project-section">
+  <div class="container-1">
+      <div class="projects-container">
+        <div class="profile"> 
+            <img src="./assets/images/web.jpg" alt="Profile Picture">
+
+        </div>
+        <div class="about-me-content">
+            <strong><h2>web design</h2></strong>
+            <h3>FARMIE</h3>
+            <span>Well designed Platform which enables the communication
+                between farmers and traders to facilitates the Agriculture
+                and boost farming field.</span>
+                <div class="testimonial-info">
+                    <img src="./assets/images/man.jpg" alt="">
+                    <span class="name">Maurice Kwizera Balinda</span>
+                    <span class="occupation">Software developer</span><br>
+                    <button class="hire-btn">Farmie</button>
+
+                </div>
+           
+                
+
+        </div>
+        
+    </div>
+    <div class="projects-container">
+        
+        <div class="about-me-content">
+            <strong><h2>Application</h2></strong>
+            <h2>SMART PHARMACY SYSTEM</h2>
+            <span>Well designed Platform which enables the communication
+              between farmers and traders to facilitates the Agriculture
+              and boost farming field.</span>
+                <div class="testimonial-info">
+                    <img src="./assets/images/man.jpg" alt="">
+                    <span class="name">Maurice Kwizera Balinda</span>
+                    <span class="occupation">Software developer</span><br>
+                    <a href="farmie-rwanda.vercel.app"><button class="hire-btn">Farmie</button></a>
+                </div>
+           
+        </div>
+        <div class="profile"> 
+          <img src="./assets/images/Rectangle 78.png" alt="Profile Picture">
+
+      </div>
+        
+    </div>
+  </div>
+  </div>
+ 
+    
+      </div>
+      <footer class="footer">
+        <div class="footer-content">
+            <div class="email">
+                <p>balindamoris.com</p>
+            </div>
+            <div class="social-media">
+                <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+      
+</body>
+</html>
+
+<script>
+    const admin = document.getElementById("dropdown")
+    const loggContext = document.getElementById("logger")
+    
+    
+    
+    const updateUserUi = (user) => {
+            if (user && user.name) {
+                if (user.isAdmin === true) {
+                    admin.innerHTML = `
+            <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
+                    <div id="dropdown-menu" class="dropdown-content">
+                        <a href="/administrator">Dashboard</a>
+                    </div>`
+                } else {
+                    admin.innerHTML = '';
+                }
+                  loggContext.innerHTML = ` 
+        <a href="https://portfolio-backend-xewv.onrender.com/logout" id="logout" class="login_button">Logout</a>
+        `
+            } else {
+                loggContext.innerHTML = `
+        <a href="login.html" id="login-btn" class="login_button">Login</a>
+    
+        `
+                admin.innerHTML = ''; 
+            }
+        };
+    
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+     .then(res => res.json())
+     .then(data => {updateUserUi(data)})
+     .catch(error => console.log(error))
+    
+     document.addEventListener('click', async (e) => {
+            if (e.target.id === 'logout') {
+                e.preventDefault();
+                try {
+                    await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
+                        method: 'POST', 
+                        credentials: 'include' 
+                    });
+                    updateUserUi(null); 
+                    location.assign('login.html')
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                }
+            }
+        });  
+    
+        // Function to get cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split(";")
+                .map(cookie => cookie.trim().split("="))
+                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+            return cookies[name];
+        }
+    
+    
+    
+    
+    </script>
+    

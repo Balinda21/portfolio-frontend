@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about page</title>
+    <link rel="stylesheet" href="./assets/CSS/About.css">
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div>
+        <header>
+            <h3 class="farmie">
+              <span class="far">Mau</span>rice.
+            </h3>
+            <nav class="nav">   
+                <a href="./index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                 <div class="dropdown" id="dropdown" > 
+              </div>
+              </nav>   
+            <div id="logger">
+                
+            </div>         
+            <button id="nav-toggle" class="nav-btn">
+              <i class="fa fa-bars"></i>
+            </button>
+
+           
+            
+          </header>
+      </div>
+      <!--Hero section-->
+      <div class="hero_section">      
+     <h3>ABOUT ME</h3>
+   
+   
+      </div>
+      
+      <div class="about-me-container">
+        <div class="profile"> 
+            <img src="./assets/images/profile.jpg" alt="Profile Picture">
+
+        </div>
+        <div class="about-me-content">
+            <strong><h2>MY STORY</h2></strong>
+            <span>Far far away, behind the word mountains, far from 
+                the countries Vokalia and Consonantia, there live the 
+                blind texts. Separated they live in Bookmarksgrove 
+                right at the coast of the Semantics, a large language 
+                ocean.
+                <br>Far far away, behind the word mountains, far from 
+                the countries Vokalia and Consonantia, there live the 
+                blind texts. Separated they live in Bookmarksgrove 
+                right at the coast of the Semantics, a large language 
+                ocean.</span>
+            <strong>I Do Web Design & Development since I
+                was 18 Years Old</strong><br><br>
+                <button class="hire-btn">Resume</button>
+
+        </div>
+        
+    </div>
+    
+      </div>
+      
+    
+ <footer class="footer">
+  <div class="footer-content">
+      <div class="email">
+          <p>Email: example@example.com</p>
+      </div>
+      <div class="social-media">
+          <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fa fa-instagram"></i></a>
+      </div>
+  </div>
+</footer>     
+</body>
+
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var navToggle = document.getElementById("nav-toggle");
+      var navMenu = document.querySelector(".nav");
+
+      navToggle.addEventListener("click", function() {
+          navMenu.classList.toggle("active");
+      });
+  });
+</script>
+
+<script>
+    const admin = document.getElementById("dropdown")
+    const loggContext = document.getElementById("logger")
+    
+    
+    
+    const updateUserUi = (user) => {
+            if (user && user.name) {
+                if (user.isAdmin === true) {
+                    admin.innerHTML = `
+            <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
+                    <div id="dropdown-menu" class="dropdown-content">
+                        <a href="/administrator">Dashboard</a>
+                    </div>`
+                } else {
+                    admin.innerHTML = '';
+                }
+                  loggContext.innerHTML = ` 
+        <a href="/logout" id="logout" class="login_button">Logout</a>
+        `
+            } else {
+                loggContext.innerHTML = `
+        <a href="/loggin" id="login-btn" class="login_button">Login</a>
+    
+        `
+                admin.innerHTML = ''; 
+            }
+        };
+    
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+     .then(res => res.json())
+     .then(data => {updateUserUi(data)})
+     .catch(error => console.log(error))
+    
+     document.addEventListener('click', async (e) => {
+            if (e.target.id === 'logout') {
+                e.preventDefault();
+                try {
+                    await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
+                        method: 'POST', 
+                        credentials: 'include' 
+                    });
+                    updateUserUi(null); 
+                    location.assign('/loggin')
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                }
+            }
+        });
+    
+        // Function to get cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split(";")
+                .map(cookie => cookie.trim().split("="))
+                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+            return cookies[name];
+        }
+    </script>
+    
+    
