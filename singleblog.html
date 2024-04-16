@@ -195,10 +195,8 @@
             const contentImage = document.getElementById("contentImage");
             const contentBlog = document.getElementById("contentBlog");
     
-            const params = new URLSearchParams(window.location.search);
-            const id = params.get('id');
+            const id = window.location.pathname.split('=')[1]
             console.log("ID:", id);
-
 
     
             fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`,  {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
