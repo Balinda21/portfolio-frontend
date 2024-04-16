@@ -186,26 +186,26 @@ const updateUserUi = (user) => {
         }
     };
 
- fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
- .then(res => res.json())
- .then(data => {updateUserUi(data)})
- .catch(error => console.log(error))
+//  fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+//  .then(res => res.json())
+//  .then(data => {updateUserUi(data)})
+//  .catch(error => console.log(error))
 
- document.addEventListener('click', async (e) => {
-        if (e.target.id === 'logout') {
-            e.preventDefault();
-            try {
-                await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
-                    method: 'POST', 
-                    credentials: 'include' 
-                });
-                updateUserUi(null); 
-                location.assign('login.html')
-            } catch (error) {
-                console.error('Error logging out:', error);
-            }
-        }
-    });
+//  document.addEventListener('click', async (e) => {
+//         if (e.target.id === 'logout') {
+//             e.preventDefault();
+//             try {
+//                 await fetch('https://portfolio-backend-xewv.onrender.com/logout', {
+//                     method: 'POST', 
+//                     credentials: 'include' 
+//                 });
+//                 updateUserUi(null); 
+//                 location.assign('login.html')
+//             } catch (error) {
+//                 console.error('Error logging out:', error);
+//             }
+//         }
+//     });
 
 
 
