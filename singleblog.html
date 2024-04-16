@@ -195,7 +195,7 @@
             const contentImage = document.getElementById("contentImage");
             const contentBlog = document.getElementById("contentBlog");
     
-            const id = window.location.pathname.split('=')[1]
+            const id = window.location.pathname.split('=').pop();
     
             fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`, {credentials: "include"})
             .then(res => res.json())
