@@ -195,11 +195,11 @@
             const contentImage = document.getElementById("contentImage");
             const contentBlog = document.getElementById("contentBlog");
     
-            const id = window.location.pathname.split('=')[1]
-            console.log("ID:", id);
+            const blog_id = window.location.pathname.split('=')[1]
+            console.log("ID:", blog_id);
 
     
-            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`,  {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
+            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${blog_id}`,  {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
             .then(res => res.json())
             .then(data => {
                 if(data){
