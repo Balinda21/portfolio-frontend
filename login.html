@@ -122,8 +122,9 @@
                 console.log(data)
                 if(data){
                     const {token} = data
+                    console.log(token)
                 document.cookie= `jwt=${token}; path='/'; maxAge= 3 * 24 * 60 * 60 * 1000`
-                   location.assign('index.html')
+                //    location.assign('index.html')
                 }
                 
             } catch (error) {
