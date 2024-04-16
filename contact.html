@@ -106,7 +106,7 @@
            message: messageInput
           }
          
-          fetch('https://portfolio-backend-xewv.onrender.com/api/user',{credentials:"include"})
+          fetch('https://portfolio-backend-xewv.onrender.com/api/user',{credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
           .then(res =>res.json())
           .then(data => {
     
@@ -175,7 +175,7 @@
             }
         };
     
-     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
      .then(res => res.json())
      .then(data => {updateUserUi(data)})
      .catch(error => console.log(error))

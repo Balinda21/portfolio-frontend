@@ -84,7 +84,7 @@
                         <h2>${blog.title}</h2>
                         <span class="card-date">${blog.date}</span>
                         <p>${blog.description}</p>
-                        <a href="singleblog.html?id=${blog._id}" class="read-more">Read More</a>
+                        <a href="singleblog.html?=${blog._id}" class="read-more">Read More</a>
                     </div>
                 `;
                 blogCard.innerHTML = cardContent;
@@ -124,7 +124,7 @@
             }
         };
     
-     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include"})
+     fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
      .then(res => res.json())
      .then(data => {updateUserUi(data)})
      .catch(error => console.log(error))
