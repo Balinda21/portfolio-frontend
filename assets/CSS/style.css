@@ -427,7 +427,7 @@ nav a.active {
       align-items: center;
       justify-content: center;
       gap: 1.5rem;
-      background-color: #8bc34a;
+      background-color:#393e46;
       transition: 1s;
       z-index: 1000;
     }
