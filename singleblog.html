@@ -199,7 +199,8 @@
             console.log("ID:", id);
 
     
-            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`,  {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
+            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`, { credentials: "include" })
+            window.location.pathname.split('=')[1]
             .then(res => res.json())
             .then(data => {
                 if(data){
