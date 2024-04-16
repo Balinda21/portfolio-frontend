@@ -197,7 +197,7 @@
     
             const id = window.location.pathname.split('=')[1]
     
-            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${id}`, {credentials: "include"})
+            fetch(`https://portfolio-backend-xewv.onrender.com/api/singleblogs/${blog._id}`, {credentials: "include"})
             .then(res => res.json())
             .then(data => {
                 if(data){
