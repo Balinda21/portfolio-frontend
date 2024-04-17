@@ -172,8 +172,14 @@ const updateUserUi = (user) => {
                     <a href="admindashboard.html">Dashboard</a>
                 </div>`
             } else {
-                admin.innerHTML = '';
-            }
+                    // Hide admin dashboard link for normal users
+                    document.querySelector('a[href="admindashboard.html"]').style.display = 'none';
+                    // Check if the user is trying to access admin dashboard directly
+                    if (window.location.pathname === '/admindashboard.html') {
+                        // Redirect the user back to the homepage or any other page
+                        window.location.replace('/index.html'); // You can change '/index.html' to any other page
+                    }
+                }
               loggContext.innerHTML = ` 
     <a href="/logout" id="logout" class="login_button">Logout</a>
     `
