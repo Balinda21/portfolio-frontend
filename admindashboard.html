@@ -170,7 +170,7 @@ document.getElementById('editBlogId').value = blogId;
                 });
                 if (response.ok) {
                   event.target.closest('.blog-card').remove();
-                  alert('Blog deleted successfully!');
+                  // alert('Blog deleted successfully!');
                 } else {
                   alert('Failed to delete blog. Please try again later.');
                 }
@@ -203,7 +203,7 @@ document.getElementById('editForm').addEventListener('submit', async function(ev
       body: JSON.stringify(editedBlog)
     });
     if (editResponse.ok) {
-      alert('Blog edited successfully!');
+      // alert('Blog edited successfully!');
       // Reload the page to reflect the changes
       location.reload();
     } else {
