@@ -12,7 +12,7 @@
 </head>
 <body>
   
-<div class="">
+<div class="">  
   <header>
     <h3 class="farmie">
       <span class="far">Mau</span>rice.
@@ -50,6 +50,9 @@
       <input type="email" id="emailor" placeholder="Your Email" required>
       <input type="text" id="subject" name="subject" placeholder="Subject" required>
       <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+      <!-- Add this div to display messages -->
+<div id="message" class="message"></div>
+
       <button type="submit">Send</button>
     </form>
   </section>
@@ -97,65 +100,71 @@
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-      const contactForm = document.getElementById('contact-form');
-      
-      // Add event listener to form submission
-      contactForm.addEventListener('submit', function (event) {
-          event.preventDefault();
+    const contactForm = document.getElementById('contact-form');
+    const messageDiv = document.getElementById('message'); // Get the message div
 
-          
-          // Get form data
-          const textorInput = document.getElementById('textor').value
-          const emailorInput = document.getElementById('emailor').value
-          const subjectInput =  document.getElementById('subject').value
-          const messageInput =  document.getElementById('message').value
+    // Add event listener to form submission
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-          const messages = {
-          name: textorInput,
-           email:emailorInput,
-          subject: subjectInput,
-           message: messageInput
-          }
-         
-          fetch('https://portfolio-backend-xewv.onrender.com/api/user',{credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
-          .then(res =>res.json())
-          .then(data => {
-    
+        // Get form data
+        const textorInput = document.getElementById('textor').value
+        const emailorInput = document.getElementById('emailor').value
+        const subjectInput = document.getElementById('subject').value
+        const messageInput = document.getElementById('message').value
 
-            if(data){
-              fetch('https://portfolio-backend-xewv.onrender.com/submit-contact-form', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(messages),
-              credentials:"include"
-          })
-          .then(response => {
-              if (response.ok) {
-                  // alert('Form submitted successfully.');
-                  contactForm.reset();
-              } else {
-                  alert('Failed to submit form. Please try again later.');
-              }
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('An error occurred while submitting the form.');
-          });
-            }
-            else{
-              alert('login to submit the form')
-            }
-          })
-          .catch(error => console.log(error))
+        const messages = {
+            name: textorInput,
+            email: emailorInput,
+            subject: subjectInput,
+            message: messageInput
+        }
 
-
-          // Send AJAX request to backend
-         
-      });
+        fetch('https://portfolio-backend-xewv.onrender.com/api/user', { credentials: "include", headers: { "Authorization": `Bearer ${document.cookie.split('jwt=')[1]}` } })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    fetch('https://portfolio-backend-xewv.onrender.com/submit-contact-form', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(messages),
+                        credentials: "include"
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                // Display success message in green color
+                                messageDiv.textContent = 'Form submitted successfully.';
+                                messageDiv.classList.remove('error');
+                                messageDiv.classList.add('success');
+                                contactForm.reset();
+                            } else {
+                                // Display error message in red color
+                                messageDiv.textContent = 'Failed to submit form. Please try again later.';
+                                messageDiv.classList.remove('success');
+                                messageDiv.classList.add('error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            // Display error message in red color
+                            messageDiv.textContent = 'An error occurred while submitting the form.';
+                            messageDiv.classList.remove('success');
+                            messageDiv.classList.add('error');
+                        });
+                }
+                else {
+                    // Display error message in red color
+                    messageDiv.textContent = 'Login to submit the form';
+                    messageDiv.classList.remove('success');
+                    messageDiv.classList.add('error');
+                }
+            })
+            .catch(error => console.log(error))
+    });
+});
    
-  });
 </script>
 <script>
     const admin = document.getElementById("dropdown")

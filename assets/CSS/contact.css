@@ -76,6 +76,19 @@ body, h1, h2, form, input, textarea, button, ul, li {
   .social-links a {
     margin-right: 10px;
   }
+  .message {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
   
   /* Responsive design */
   @media (max-width: 768px) {
