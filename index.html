@@ -188,7 +188,6 @@
 
         // Check if the user is not an admin
         if (user && !user.isAdmin && window.location.pathname.includes("admindashboard.html")) {
-            // Redirect the user to another page
             window.location.href = 'index.html';
         }
     })
