@@ -205,38 +205,10 @@
                 if(data){
                     contentImage.innerHTML = `<img src="${data.picture}" alt="Blog Image">`;
                     contentBlog.innerHTML = `<h2>${data.title}</h2><span class="card-date">${data.date}</span><p>${data.description}</p>`;
-                    likeCountElement.textContent = data.likes;
                 }
             })
             .catch(error => console.log(error));
-
-            // likes
-
-            let isLiked = false;
-
-            likeIcon.addEventListener("click", function() {
-                const userId = "user123"; // Replace "user123" with the actual user ID or fetch it from the server
-
-                fetch(`https://portfolio-backend-xewv.onrender.com/api/blog/${id}/like`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ userId: userId }),
-                    credentials: "include"
-                })
-                .then(response => response.json())
-                .then(data => {
-                    likeCountElement.textContent = data.likes;
-                    isLiked = !isLiked;
-                    likeIcon.classList.toggle("liked", isLiked);
-                })
-                .catch(error => {
-                    console.error("Error toggling like:", error);
-                    // Handle error here
-                });
-            });
-
+    
            
                     });
     </script>
@@ -244,7 +216,24 @@
     
 <!-- likes  -->
 <script>
-    
+    let likeCount = 0;
+    let isLiked = false;
+
+    function toggleLike() {
+        const likeIcon = document.getElementById("likeIcon");
+        const likeCountElement = document.getElementById("likeCount");
+
+        if (isLiked) {
+            likeCount--;
+        } else {
+            likeCount++;
+        }
+
+        isLiked = !isLiked;
+
+        likeCountElement.textContent = likeCount;
+        likeIcon.classList.toggle("liked", isLiked);
+    }
 
 // web manipulation for admin
 const admin = document.getElementById("dropdown")
@@ -253,8 +242,6 @@ const commentForm = document.querySelector(".comment-form");
 const commentsContainer = document.querySelector(".comments");
 const contentImage = document.getElementById("contentImage");
 const contentBlog = document.getElementById("contentBlog");
-const likeIcon = document.getElementById("likeIcon");
-const likeCountElement = document.getElementById("likeCount");
 
 
  // Function to fetch comments and display them
@@ -315,7 +302,52 @@ const updateUserUi = (user) => {
     
     updateUserUi(user);
 
+    commentForm.addEventListener("submit", async function(event) {
+                event.preventDefault(); // Prevent default form submission
     
+                const commentText = commentForm.querySelector("textarea").value.trim();
+    
+                if (commentText !== "") {
+                    try {
+                        
+                        if (user && user.name) {
+                            const response = await fetch("https://portfolio-backend-xewv.onrender.com/api/comments", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    text: commentText,
+                                    name: user.name 
+                                }),
+                                credentials: "include"
+                            });
+    
+                            if (response.ok) {
+                                // alert("Comment submitted successfully!");
+                                commentForm.reset(); 
+                                await fetchAndDisplayComments();
+                            } else {
+                                alert("Failed to submit comment. Please try again later.");
+                            }
+                        } else {
+                            alert("Please log in to submit a comment.");
+                            window.location.href = "login.html";
+                        }
+                    } catch (error) {
+                        console.error("Error submitting comment:", error);
+                        alert("An error occurred. Please try again later.");
+                    }
+                } else {
+                    alert("Please enter a valid comment.");
+                }
+            });
+
+
+
+
+
+
 })
 
  .catch(error => console.log(error))
