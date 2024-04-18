@@ -49,7 +49,7 @@
       <input type="text" id="textor" name="name" placeholder="Your Name" required>
       <input type="email" id="emailor" placeholder="Your Email" required>
       <input type="text" id="subject" name="subject" placeholder="Subject" required>
-      <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+      <textarea name="message" id="messages" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
       
     </form>
@@ -112,7 +112,7 @@
         const textorInput = document.getElementById('textor').value
         const emailorInput = document.getElementById('emailor').value
         const subjectInput = document.getElementById('subject').value
-        const messageInput = document.getElementById('message').value
+        const messageInput = document.getElementById('messages').value
 
         const messages = {
             name: textorInput,
