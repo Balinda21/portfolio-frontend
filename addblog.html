@@ -37,6 +37,9 @@
         <button type="submit">Submit</button>
       </div>
     </form>
+    <!-- display messages -->
+ <div id="message" class="message"></div>
+
   </div>
 </div>
 
@@ -47,7 +50,6 @@
 </body>
 </html>
 <script>
-  // Function to handle form submissions
   document.getElementById('blog-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -55,39 +57,45 @@
     var formData = new FormData(this);
     var blogData = {};
     formData.forEach(function(value, key) {
-      blogData[key] = value;
+        blogData[key] = value;
     });
 
     // Make a POST request to the API endpoint
     fetch('https://portfolio-backend-xewv.onrender.com/api/blogs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(blogData),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(blogData),
     })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to add blog');
-      }
-      return response.json();
+        if (!response.ok) {
+            throw new Error('Failed to add blog');
+        }
+        return response.json();
     })
     .then(data => {
-      console.log('Blog added successfully:', data);
-      // alert('Article Added Successfully')
-      // Reset form
-      document.getElementById('blog-form').reset();
-      // Update blog cards if needed
-      // updateBlogCards(); // Uncomment this if you want to update blog cards after adding a new blog
+        console.log('Blog added successfully:', data);
+        // Display success message in green color
+        var messageDiv = document.getElementById('message');
+        messageDiv.textContent = 'Blog added successfully';
+        messageDiv.classList.remove('error');
+        messageDiv.classList.add('success');
+        // Reset form
+        document.getElementById('blog-form').reset();
+        // Update blog cards if needed
+        // updateBlogCards(); // Uncomment this if you want to update blog cards after adding a new blog
     })
     .catch(error => {
-      console.error('Error adding blog:', error);
-      // Handle error
+        console.error('Error adding blog:', error);
+        // Display error message in red color
+        var messageDiv = document.getElementById('message');
+        messageDiv.textContent = 'Failed to add blog';
+        messageDiv.classList.remove('success');
+        messageDiv.classList.add('error');
+        // Handle error
     });
-  });
+});
 
 </script>
-
-
-
 
