@@ -8,7 +8,7 @@
     <title>Sign Up Page</title>
     <style>
         body {
-            font-family:'poppins', 'san serif';
+            font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
             margin: 0;
             padding: 0;
@@ -65,11 +65,17 @@
         .login-link a:hover {
             text-decoration: underline;
         }
+        .message {
+            color: red;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
+        <!-- Add a message div -->
+        <div id="message" class="message"></div>
         <form id="signup-form">
             <input type="text" id="signup-name" placeholder="Name" required>
             <input type="email" id="signup-email" placeholder="Email" required>
@@ -86,6 +92,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const signupForm = document.getElementById('signup-form');
+        const messageDiv = document.getElementById('message');
 
         signupForm.addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -104,20 +111,22 @@
 
                 if (!response.ok) {
                     const data = await response.json();
-                    throw new Error(data.message);
+                    // Display error message in the message div
+                    messageDiv.textContent = data.message;
+                    return;
                 }
 
-                alert('Signup successful! Please login.');
+                // Display success message in the message div
+                messageDiv.textContent = 'Signup successful! Please login.';
                 window.location.href = 'login.html';
             } catch (error) {
                 console.error(error);
-                alert('Error: ' + error.message);
+                // Display error message in the message div
+                messageDiv.textContent = 'Error: ' + error.message;
             }
 
             signupForm.reset();
         });
     });
 </script>
-    </body>
 </html>
-
