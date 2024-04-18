@@ -103,6 +103,7 @@
 <script>
     
        // Update the loginForm event listener to display error and success messages
+       const loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', async function(event) {
     event.preventDefault();
     const email = document.getElementById('login-email').value;
