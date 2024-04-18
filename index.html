@@ -201,18 +201,24 @@ const updateUserUi = (user) => {
             } , 0)
         }
     });
-
-
-
-
-     // Function to get cookie by name
-     function getCookie(name) {
-            const cookies = document.cookie.split(";")
-                .map(cookie => cookie.trim().split("="))
-                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-            return cookies[name];
-        }
+// protecting admindashboard
+   
     
+fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
+ .then(res => res.json())
+ .then(user => { 
+    updateUserUi(user);
+
+    // Check if the user is not an admin
+    if (user && !user.isAdmin && window.location.pathname.includes("admindashboard.html")) {
+        // Redirect the user to another page
+        window.location.href = 'index.html';
+    }
+
+    
+})
+.catch(error => console.log(error));
+
 
 </script>
 
