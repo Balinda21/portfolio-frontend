@@ -158,49 +158,61 @@
     </script>
 
 <script>
-    const admin = document.getElementById("dropdown");
-    const loggContext = document.getElementById("logger");
+const admin = document.getElementById("dropdown")
+const loggContext = document.getElementById("logger")
 
-    const updateUserUi = (user) => {
+
+
+const updateUserUi = (user) => {
         if (user && user.name) {
             if (user.isAdmin === true) {
                 admin.innerHTML = `
-                    <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
-                    <div id="dropdown-menu" class="dropdown-content">
-                        <a href="admindashboard.html">Dashboard</a>
-                    </div>`;
+        <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
+                <div id="dropdown-menu" class="dropdown-content">
+                    <a href="admindashboard.html">Dashboard</a>
+                </div>`
             } else {
                 admin.innerHTML = '';
             }
-            loggContext.innerHTML = ` 
-                <a href="/logout" id="logout" class="login_button">Logout</a>`;
+              loggContext.innerHTML = ` 
+    <a href="/logout" id="logout" class="login_button">Logout</a>
+    `
         } else {
             loggContext.innerHTML = `
-                <a href="login.html" id="login-btn" class="login_button">Login</a>`;
-            admin.innerHTML = '';
+    <a href="login.html" id="login-btn" class="login_button">Login</a>
+
+    `
+            admin.innerHTML = ''; 
         }
     };
 
-    fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
-    .then(res => res.json())
-    .then(user => { 
-        updateUserUi(user);
+ fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
+ .then(res => res.json())
+ .then(data => {updateUserUi(data)})
+ .catch(error => console.log(error))
 
-        // Check if the user is not an admin
-        if (user && !user.isAdmin && window.location.pathname.includes("admindashboard.html")) {
-            window.location.href = 'index.html';
-        }
-    })
-    .catch(error => console.log(error));
-
-    document.addEventListener('click', async (e) => {
+ document.addEventListener('click', async (e) => {
         if (e.target.id === 'logout') {
             e.preventDefault();
-            updateUserUi(null);
-            document.cookie = `jwt=; max-age=0`;
+            updateUserUi(null)
+            document.cookie = `jwt=; max-age=0`
             setTimeout(() =>{
-                window.location.href = 'login.html';
-            } , 0);
+                window.location.href = 'login.html'
+            } , 0)
         }
     });
+
+
+
+
+     // Function to get cookie by name
+     function getCookie(name) {
+            const cookies = document.cookie.split(";")
+                .map(cookie => cookie.trim().split("="))
+                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+            return cookies[name];
+        }
+    
+
 </script>
+
