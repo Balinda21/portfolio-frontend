@@ -89,6 +89,16 @@ nav a.active {
   .far {
     color: var(--primary-color);
   }
+  .message {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: red; /* Default color for error messages */
+}
+.success {
+    color: green; /* Green color for success messages */
+}
+
+
   
   .login_button {
     padding: 12px 35px;

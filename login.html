@@ -90,6 +90,9 @@
             <input type="password" name="login-password" id="login-password" placeholder="Password" required>
             <input type="submit" value="Login">       
         </form>
+        <!-- Add this div to display messages -->
+<div id="message" class="message"></div>
+
         <div class="signup-link">
             <span>Don't have an account? </span><a href="signup.html">Sign up here</a>
         </div>
@@ -99,41 +102,50 @@
 
 <script>
     
-        const loginForm = document.getElementById('login-form');
+       // Update the loginForm event listener to display error and success messages
+loginForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
-        loginForm.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-         
-
-            try {
-                const response = await fetch('https://portfolio-backend-xewv.onrender.com/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email, password: password }),
-                    credentials: 'include'
-                });
-
-                const data = await response.json();
-                
-                console.log(data)
-                if(data){
-                    const {token} = data
-                document.cookie= `jwt=${token}; path='/'; maxAge= 3 * 24 * 60 * 60 * 1000`
-                // console.log(token)
-                   location.assign('index.html')
-                }
-                
-            } catch (error) {
-                console.error('Error during login:', error);
-                alert('An error occurred during login. Please try again later.');
-            }
-
-            loginForm.reset();
+    try {
+        const response = await fetch('https://portfolio-backend-xewv.onrender.com/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password }),
+            credentials: 'include'
         });
+
+        const data = await response.json();
+        
+        console.log(data)
+        if(data){
+            const {token} = data
+            document.cookie= `jwt=${token}; path='/'; maxAge= 3 * 24 * 60 * 60 * 1000`
+            location.assign('index.html')
+            
+            // Display success message
+            const successMessage = "Login successful!";
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = successMessage;
+            messageDiv.classList.add('success'); // Add the success class to change color to green
+        } else {
+            // Display error message for incorrect email or password
+            const errorMessage = "Incorrect email or password";
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = errorMessage;
+            messageDiv.classList.remove('success'); // Remove success class if present
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login. Please try again later.');
+    }
+
+    loginForm.reset();
+});
+
 const cookieeeee = document.cookie.split("=")[1];
 console.log(cookieeeee);
 if (cookieeeee) {
