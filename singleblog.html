@@ -258,7 +258,7 @@ const likeCountElement = document.getElementById("likeCount");
 
 
  // Function to fetch comments and display them
-            async function fetchAndDisplayComments() {
+            async function fetchAndDisplayComments(postId) {
                 try {
                     const response = await   fetch(`https://portfolio-backend-xewv.onrender.com/api/comments/${postId}`)
                     if (response.ok) {
