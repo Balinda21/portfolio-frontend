@@ -189,7 +189,7 @@
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    fetch('http://localhost:3000/send-email', {
+                    fetch('https://portfolio-backend-xewv.onrender.com/send-email', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
