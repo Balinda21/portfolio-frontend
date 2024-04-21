@@ -3,6 +3,8 @@
     --secondary-color: #51af5b;
     --tertiary-color: #393e46;
     --fill-color: #eeeeee;
+    background: var(--darkblack);
+    color: var(--bgcolor);
   }
   
   
@@ -409,160 +411,175 @@ nav a.active {
 }
 
 
-.subscribe-newsletter h4 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.subscribe-newsletter form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.subscribe-newsletter input[type="email"] {
-  width: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-.subscribe-newsletter input[type="message"] {
-  width: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.subscribe-newsletter button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.subscribe-newsletter button:hover {
-  background-color: #0056b3;
-}
 
 
 /*footer*/
-/* styles.css */
-
-/* Footer */
 .footer {
-  background-color: #333333; /* Dark background color */
-  color: #ffffff; /* Light text color */
-  padding: 50px 0; /* Adjust padding as needed */
-  text-align: center;
+  background: var(--darkblack);
+  color: var(--bgcolor);
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.footer-content {
+  padding: 80px 0;
+}
+
+.footer-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
 }
 
-.footer-logo {
-  flex: 1 1 300px; /* Adjust width as needed */
-  margin-bottom: 20px;
+.footer-row .title h4 {
+  color: var(--bgcolor);
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 500;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.footer-row p {
+  color: var(--paragraph);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 273px;
 }
 
-.slogan {
-  font-size: 14px;
-  opacity: 0.8;
+.title h4 span {
+  color: var(--yellow);
 }
 
-.footer-links {
-  flex: 1 1 300px; /* Adjust width as needed */
-  margin-bottom: 20px;
+.mark {
+  font-size: 34px !important;
+  font-weight: 600 !important;
+}
+.iconify {
+  color: #007bff; /* Change icon color */
+  font-size: 24px; /* Change icon size */
 }
 
-.nav-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+/* Address icons */
+.q-body > div {
+  margin-bottom: 16px;
 }
 
-.nav-links li {
-  margin-bottom: 10px;
+.flex-content {
+  display: flex;
+  gap: 10px;
 }
 
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+/* Footer social icons */
+
+.f-social-icons {
+  display: flex;
 }
 
-.nav-links a:hover {
-  color: #dddddd; /* Lighter text color on hover */
+.f-social-icons > div {
+  background-color: #2d333c;
+  color: var(--bgcolor);
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
+.f-social-icons > div:hover {
+  background-color: yellow;
+}
+/* Newsletter Section */
 .newsletter {
-  flex: 1 1 300px; /* Adjust width as needed */
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 40px;
 }
-
+.newsletter .title h4 {
+  margin-bottom: 20px;
+}
 .subscribe-form {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
-
 .subscribe-form input[type="email"] {
-  width: 250px;
+  width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px 0 0 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
   margin-right: 10px;
+  font-size: 16px;
 }
-
 .subscribe-form button {
+  background-color: var(--primary-color);
+  color: var(--fill-color);
   padding: 10px 20px;
-  background-color: #007bff; /* Primary color */
-  color: #ffffff;
   border: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
-
 .subscribe-form button:hover {
-  background-color: #0056b3; /* Darker shade of primary color on hover */
+  background-color: #ffdb4d;
 }
 
-.footer-social {
-  margin-top: 20px;
+/* Copyright */
+.copyright p {
+  text-align: center;
 }
 
-.social-icon {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 0 10px;
-  transition: color 0.3s ease;
+.copyright {
+  position: relative;
 }
 
-.social-icon:hover {
-  color: #dddddd; /* Lighter text color on hover */
+.back-top {
+  font-size: 45px;
+  position: absolute;
+  right: 50px;
+  bottom: -40px;
+  animation: mymove infinite;
+  animation-duration: 1s;
 }
 
-.footer-text {
-  margin-top: 20px;
-  font-size: 14px;
-  opacity: 0.8;
+@keyframes mymove {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
+/* Readit section */
+.readit-body {
+  margin-bottom: 20px;
+}
+
+
+
+/* Responsiveness */
+@media screen and (max-width: 769px) {
+  .footer-row > div {
+    margin-bottom: 10px;
+    flex-basis: 100%;
+    text-align: left;
+  }
+
+  .footer-row .title h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .footer-content {
+    padding: 40px 0;
+  }
+
+  .back-top {
+    font-size: 40px;
+    right: 20px;
+  }
+}
 
 /* Media query for responsiveness */
 @media screen and (max-width: 768px) {
