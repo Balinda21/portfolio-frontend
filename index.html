@@ -226,11 +226,6 @@
             
         </div>
     </div>
-    
-
-
-
-      
       
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -289,16 +284,38 @@ const updateUserUi = (user) => {
     });
 
 
-
-
-     // Function to get cookie by name
-     function getCookie(name) {
-            const cookies = document.cookie.split(";")
-                .map(cookie => cookie.trim().split("="))
-                .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-            return cookies[name];
-        }
-    
-
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const subscribeForm = document.querySelector('.subscribe-form');
+
+    subscribeForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(subscribeForm); // Create FData object from the form
+        const email = formData.get('email'); // Get the email from the form data
+
+        try {
+            const response = await fetch('https://portfolio-backend-xewv.onrender.com/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email }) // Send email data as JSON to the server
+            });
+
+            if (response.ok) {
+                const message = await response.text();
+                alert(message); // Show success message to the user
+            } else {
+                throw new Error('Failed to subscribe');
+            }
+        } catch (error) {
+            console.error('Subscription error:', error);
+            alert('An error occurred. Please try again later.'); // Show error message to the user
+        }
+    });
+});
+
+</script>
