@@ -209,6 +209,7 @@
                             <input type="email" name="email" placeholder="Your Email Address" required>
                             <button type="submit">Subscribe</button>
                         </form>
+                        <div id="message" class="message"></div>
                     </div>
                 </div>
                 <div class="copyright">
@@ -286,6 +287,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const subscribeForm = document.querySelector('.subscribe-form');
+        const messageDiv = document.getElementById('message');
+
+const showMessage = (message, color) => {
+    messageDiv.textContent = message;
+    messageDiv.style.color = color;
+};
 
         subscribeForm.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent the default form submission behavior
@@ -310,7 +317,7 @@
                 }
             } catch (error) {
                 console.error('Subscription error:', error);
-                showMessage('An error occurred. Please try again later.', 'red'); // Show error message to the user
+                 showMessage('An error occurred. Please try again later.', 'red'); // Show error message to the user
             }
         });
     });
