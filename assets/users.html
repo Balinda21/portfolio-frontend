@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: auto;
+            max-height: 400px; /* Limiting max height to trigger scrollbar */
+        }
+
+        .hero-section {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 2; /* Higher z-index to keep it above the table */
+        }
+
+        .hero-section h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin: 10px 0 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+            z-index: 1; /* Lower z-index to keep it below the hero section */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .edit, .delete {
+            padding: 6px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .edit {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .edit:hover {
+            background-color: #45a049;
+        }
+
+        .delete {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .delete:hover {
+            background-color: #cc0000;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 3; /* Higher z-index to display above other elements */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20px auto; /* Center modal on screen */
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            max-width: 400px;
+            position: relative;
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: calc(100% - 40px); /* Set maximum height for the modal content */
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 8px;
+            right: 16px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>User Management System</h1>
+            <p>Welcome to our user management system. Manage your users efficiently!</p>
+        </div>
+
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit User</h2>
+            <form id="editForm">
+                <label for="editName">Name:</label><br>
+                <input type="text" id="editName" name="editName"><br><br>
+                <label for="editEmail">Email:</label><br>
+                <input type="email" id="editEmail" name="editEmail"><br><br>
+                <input type="hidden" id="editUserId" name="editUserId">
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+function deleteUser(id) {
+    // Send DELETE request to delete the user
+    fetch(`http://localhost:3000/delete/users/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete user');
+        }
+        fetchUsers(); // Refresh user list after successful deletion
+    })
+    .catch(error => console.error('Error deleting user:', error));
+}
+
+
+
+
+
+
+  // Function to fetch users from the server and populate the table
+  function fetchUsers() {
+    fetch('http://localhost:3000/users')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the response data
+        if (data && data.length > 0) {
+            // Clear existing table rows
+            const tableBody = document.querySelector('#userTable tbody');
+            tableBody.innerHTML = '';
+
+            // Populate the table with user data
+            data.forEach(user => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>
+            <button class="edit" onclick="console.log('Edit clicked:', '${user.id}', '${user.name}', '${user.email}'); openModal('${user.id}', '${user.name}', '${user.email}')">Edit</button>
+
+            <button class="delete" onclick="deleteUser('${user.id}')">Delete</button>
+        </td>
+    `;
+    tableBody.appendChild(row);
+    
+});
+
+        } else {
+            console.log('No users found.');
+        }
+    })
+    .catch(error => console.error('Error fetching users:', error));
+}
+
+// Function to open modal and populate with user info
+function openModal(id, name, email) {
+    if (id === undefined) {
+        console.error("User ID is undefined.");
+        return;
+    }
+    console.log("User ID:", id);
+    console.log("User Name:", name);
+    console.log("User Email:", email);
+
+    const editForm = document.getElementById("editForm");
+    const editNameInput = document.getElementById("editName");
+    const editEmailInput = document.getElementById("editEmail");
+
+    // Populate the edit form fields with user data
+    editNameInput.value = name;
+    editEmailInput.value = email;
+
+    // Set the user ID in the hidden input field
+    document.getElementById('editUserId').value = id;
+
+    // Add event listener for form submission
+    const submitHandler = function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Check if id is not undefined
+        console.log("User ID:", id);
+
+        // Construct the request body
+        const requestBody = {
+            name: editNameInput.value,
+            email: editEmailInput.value,
+        };
+
+        // Send PUT request to edit the user
+        fetch(`http://localhost:3000/edit/user/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to edit user');
+            }
+            closeModal(); // Close modal upon successful edit
+            fetchUsers(); // Refresh user list
+        })
+        .catch(error => console.error('Error editing user:', error));
+    };
+
+    // Remove any existing event listener before adding a new one
+    editForm.removeEventListener('submit', submitHandler);
+    editForm.addEventListener('submit', submitHandler);
+
+    // Display the modal
+    document.getElementById("myModal").style.display = "block";
+}
+// Function to close modal
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+// Close modal when user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }  
+}
+// Call fetchUsers function when the page loads
+document.addEventListener('DOMContentLoaded', fetchUsers);
+</script>
