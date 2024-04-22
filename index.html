@@ -319,6 +319,7 @@ const showMessage = (message, color) => {
                 console.error('Subscription error:', error);
                  showMessage('An error occurred. Please try again later.', 'red'); // Show error message to the user
             }
+            subscribeForm.reset();
         });
     });
 
