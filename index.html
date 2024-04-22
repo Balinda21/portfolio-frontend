@@ -248,7 +248,7 @@ const updateUserUi = (user) => {
         if (user && user.name) {
             if (user.isAdmin === true) {
                 admin.innerHTML = `
-        <li onclick="toggleDropdown()" class="dropbtn">Menu</li>
+        <li onclick="toggleDropdown()" class="dropbtn">Admin</li>
                 <div id="dropdown-menu" class="dropdown-content">
                     <a href="admindashboard.html">Dashboard</a>
                 </div>`
