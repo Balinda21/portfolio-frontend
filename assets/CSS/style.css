@@ -1,9 +1,8 @@
 :root {
-    --primary-color:  #007bff;
+    --primary-color:  #51af5b;
     --secondary-color: #51af5b;
     --tertiary-color: #393e46;
     --fill-color: #eeeeee;
-    background: var(--darkblack);
     color: var(--bgcolor);
   }
   
@@ -200,7 +199,7 @@ p {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #51af5b;
     color: #fff;
     transition: background-color 0.3s;
 }
@@ -390,7 +389,7 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #007bff; /* Accent color for author section */
+  background-color: #51af5b; /* Accent color for author section */
   color: #ffffff; /* White text color */
 }
 
@@ -424,7 +423,7 @@ p {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background-color: #007bff;
+  background-color: #51af5b;
   color: #fff;
   border-radius: 50%;
   text-decoration: none;
@@ -479,10 +478,10 @@ p {
 
 
 /*footer*/
+
 .footer {
   border-top: 2px solid grey;
-  background: var(--darkblack);
-  color: var(--bgcolor);
+ 
 }
 
 .footer-content {
@@ -510,17 +509,14 @@ p {
 }
 
 .title h4 span {
-  color: var(--yellow);
+  color: #51af5b;
 }
 
 .mark {
   font-size: 34px !important;
   font-weight: 600 !important;
 }
-.iconify {
-  color: #007bff; /* Change icon color */
-  font-size: 24px; /* Change icon size */
-}
+
 
 
 /* Address icons */
@@ -540,8 +536,7 @@ p {
 }
 
 .f-social-icons > div {
-  background-color: #2d333c;
-  color: var(--bgcolor);
+  background-color: var(--primary-color);
   margin-right: 10px;
   width: 50px;
   height: 50px;
@@ -552,8 +547,9 @@ p {
   transition: 0.3s ease-in-out;
 }
 
+
 .f-social-icons > div:hover {
-  background-color: yellow;
+  background-color:  #0056b3;
 }
 /* Newsletter Section */
 .newsletter {
