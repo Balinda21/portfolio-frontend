@@ -35,33 +35,34 @@
     <script src="script.js"></script>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('edit-form');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('edit-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+            // Retrieve form data
+            const name = form.elements['name'].value;
+            const email = form.elements['email'].value;
+            const password = form.elements['password'].value;
 
-        // Retrieve form data
-        const name = form.elements['name'].value;
-        const email = form.elements['email'].value;
-        const password = form.elements['password'].value;
+            // Perform necessary actions (e.g., update user info)
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Password:', password);
 
-        // Perform necessary actions (e.g., update user info)
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Password:', password);
+            // Fetch user data
+            fetch('https://portfolio-backend-xewv.onrender.com/api/user')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('User Data:', data);
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
+        });
     });
-});
-    </script>
-
-    <script>
-        // fetch user
-        fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
-    .then(res => res.json())
-    .then(data => {updateUserUi(data)})
-    .catch(error => console.log(error))
-    </script>
+</script>
 </body>
 </html>
