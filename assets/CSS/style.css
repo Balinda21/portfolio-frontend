@@ -110,7 +110,7 @@ width: 90px;
     margin-right: -250px;
     cursor: pointer;
     background-color: transparent;
-    color: var(--primary-color);
+    color: green;
     border: 2px solid var(--primary-color);
     font-weight: 700;
   }
