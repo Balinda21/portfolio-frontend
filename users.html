@@ -3,17 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>User Management</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+         body {
+            font-family: poppins, san serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-image: url('./assets/images/second.jpg'); /* Replace 'background.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            position: relative; /* Set position relative for absolute positioning of animated elements */
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+        }
+
+        .container {
+            position: relative; /* Set position relative for absolute positioning of animated elements */
+            width: 500px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add transparency to make the background image visible */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: auto;
+            max-height: 400px; /* Limiting max height to trigger scrollbar */
+            z-index: 1; /* Ensure the table appears above animations */
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Ensure animations appear behind the container */
+        }
+
+        .background-animation .shape {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: moveShape linear infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            top: 20%;
+            left: 10%;
+            animation-duration: 4s;
+        }
+
+        .shape:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            left: 30%;
+            animation-duration: 3s;
+        }
+
+        .shape:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            top: 70%;
+            left: 60%;
+            animation-duration: 5s;
+        }
+
+        /* Additional shapes */
+        .shape:nth-child(4) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 20%;
+            animation-duration: 6s;
+        }
+
+        .shape:nth-child(5) {
+            width: 35px;
+            height: 35px;
+            top: 80%;
+            left: 70%;
+            animation-duration: 3.5s;
+        }
+
+        .shape:nth-child(6) {
+            width: 45px;
+            height: 45px;
+            top: 10%;
+            left: 80%;
+            animation-duration: 4.5s;
+        }
+
+        /* Additional animations */
+        @keyframes moveShape {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(50px, 50px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes moveShapeReverse {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(-50px, -50px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .shape:nth-child(4) {
+            animation: moveShapeReverse linear infinite;
+        }
+
+        .shape:nth-child(5) {
+            animation: moveShape linear infinite;
+        }
+
+        .shape:nth-child(6) {
+            animation: moveShapeReverse linear infinite;
         }
 
         .container {
@@ -77,12 +206,15 @@
         }
 
         .edit, .delete {
-            padding: 6px 10px;
+            padding: 8px 16px;
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
             cursor: pointer;
             border: none;
+            display: inline-block;
+            margin-right: 8px;
+            outline: none;
         }
 
         .edit {
@@ -105,34 +237,32 @@
 
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
-            z-index: 3; /* Higher z-index to display above other elements */
+            z-index: 999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 20px auto; /* Center modal on screen */
+            margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
+            width: 80%;
             border-radius: 8px;
-            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            overflow-y: auto; /* Enable vertical scrolling */
-            max-height: calc(100% - 40px); /* Set maximum height for the modal content */
         }
 
         .close {
             color: #aaa;
-            position: absolute;
-            top: 8px;
-            right: 16px;
+            float: right;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
@@ -144,9 +274,49 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Animated arrow */
+        .arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate;
+            z-index: 3; /* Ensure the arrow appears above other elements */
+        }
+
+        .arrow img {
+            width: 30px;
+            height: 30px;
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
     <div class="container">
         <div class="hero-section">
             <h1>User Management System</h1>
@@ -167,154 +337,98 @@
         </table>
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
+    <!-- Modal for editing user -->
+    <div id="editModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close">&times;</span>
             <h2>Edit User</h2>
             <form id="editForm">
                 <label for="editName">Name:</label><br>
-                <input type="text" id="editName" name="editName"><br><br>
+                <input type="text" id="editName" name="editName"><br>
                 <label for="editEmail">Email:</label><br>
                 <input type="email" id="editEmail" name="editEmail"><br><br>
-                <input type="hidden" id="editUserId" name="editUserId">
-                <button type="submit">Save Changes</button>
+                <button type="submit" class="edit">Save</button>
             </form>
         </div>
     </div>
 
+    <!-- Animated arrow for admin dashboard -->
+    <a href="admindashboard.html" class="arrow">
+        <img src="./assets/images/arrow.png" alt="Arrow">
+    </a>
+
+    <!-- JavaScript -->
     <script>
-
-function deleteUser(id) {
-    // Send DELETE request to delete the user
-    fetch(`http://localhost:3000/delete/users/${id}`, {
-        method: 'DELETE'
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to delete user');
+        function fetchUsers() {
+            fetch('http://localhost:3000/users')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.length > 0) {
+                    const tableBody = document.querySelector('#userTable tbody');
+                    tableBody.innerHTML = '';
+                    data.forEach(user => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <button class="edit" onclick="openEditModal('${user.id}', '${user.name}', '${user.email}')">Edit</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    console.log('No users found.');
+                }
+            })
+            .catch(error => console.error('Error fetching users:', error));
         }
-        fetchUsers(); // Refresh user list after successful deletion
-    })
-    .catch(error => console.error('Error deleting user:', error));
-}
 
-
-
-
-
-
-  // Function to fetch users from the server and populate the table
-  function fetchUsers() {
-    fetch('http://localhost:3000/users')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        function openEditModal(userId, name, email) {
+            document.getElementById('editName').value = name;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editModal').style.display = 'block';
         }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the response data
-        if (data && data.length > 0) {
-            // Clear existing table rows
-            const tableBody = document.querySelector('#userTable tbody');
-            tableBody.innerHTML = '';
 
-            // Populate the table with user data
-            data.forEach(user => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-        <td>
-            <button class="edit" onclick="console.log('Edit clicked:', '${user.id}', '${user.name}', '${user.email}'); openModal('${user.id}', '${user.name}', '${user.email}')">Edit</button>
+        document.querySelector('#editModal .close').addEventListener('click', function() {
+            document.getElementById('editModal').style.display = 'none';
+        });
 
-            <button class="delete" onclick="deleteUser('${user.id}')">Delete</button>
-        </td>
-    `;
-    tableBody.appendChild(row);
-    
-});
-
-        } else {
-            console.log('No users found.');
+        function fetchUserAndPopulateModal(userId) {
+            fetch(`/users/${userId}`)
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('editName').value = user.name;
+                document.getElementById('editEmail').value = user.email;
+                document.getElementById('editPhone').value = user.phone; // Assuming you have phone field
+                document.getElementById('editModal').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
         }
-    })
-    .catch(error => console.error('Error fetching users:', error));
-}
 
-// Function to open modal and populate with user info
-function openModal(id, name, email) {
-    if (id === undefined) {
-        console.error("User ID is undefined.");
-        return;
-    }
-    console.log("User ID:", id);
-    console.log("User Name:", name);
-    console.log("User Email:", email);
-
-    const editForm = document.getElementById("editForm");
-    const editNameInput = document.getElementById("editName");
-    const editEmailInput = document.getElementById("editEmail");
-
-    // Populate the edit form fields with user data
-    editNameInput.value = name;
-    editEmailInput.value = email;
-
-    // Set the user ID in the hidden input field
-    document.getElementById('editUserId').value = id;
-
-    // Add event listener for form submission
-    const submitHandler = function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Check if id is not undefined
-        console.log("User ID:", id);
-
-        // Construct the request body
-        const requestBody = {
-            name: editNameInput.value,
-            email: editEmailInput.value,
-        };
-
-        // Send PUT request to edit the user
-        fetch(`http://localhost:3000/edit/user/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to edit user');
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
-            closeModal(); // Close modal upon successful edit
-            fetchUsers(); // Refresh user list
-        })
-        .catch(error => console.error('Error editing user:', error));
-    };
+        });
 
-    // Remove any existing event listener before adding a new one
-    editForm.removeEventListener('submit', submitHandler);
-    editForm.addEventListener('submit', submitHandler);
+        document.getElementById('editForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Perform edit action here
+            // Close the modal after editing
+            document.getElementById('editModal').style.display = 'none';
+        });
 
-    // Display the modal
-    document.getElementById("myModal").style.display = "block";
-}
-// Function to close modal
-function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-}
-
-// Close modal when user clicks outside of it
-window.onclick = function(event) {
-    const modal = document.getElementById("myModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }  
-}
-// Call fetchUsers function when the page loads
-document.addEventListener('DOMContentLoaded', fetchUsers);
-</script>
+        document.addEventListener('DOMContentLoaded', fetchUsers);
+    </script>
+</body>
+</html>
