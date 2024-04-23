@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile</title>
     <link rel="stylesheet" href="./assets/CSS/profile.css">
 </head>
@@ -32,37 +31,39 @@
             <button type="submit">Save Changes</button>
         </form>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('edit-form');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('edit-form');
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
 
-            // Retrieve form data
-            const name = form.elements['name'].value;
-            const email = form.elements['email'].value;
-            const password = form.elements['password'].value;
+                // Retrieve form data
+                const name = form.elements['name'].value;
+                const email = form.elements['email'].value;
+                const password = form.elements['password'].value;
 
-            // Perform necessary actions (e.g., update user info)
-            console.log('Name:', name);
-            console.log('Email:', email);
-            console.log('Password:', password);
+                // Perform necessary actions (e.g., update user info)
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Password:', password);
 
-            // Fetch user data
-            fetch('https://portfolio-backend-xewv.onrender.com/api/user')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('User Data:', data);
-                })
-                .catch(error => {
-                    console.error('Error fetching user data:', error);
-                });
+                // Fetch user data
+                fetch('https://portfolio-backend-xewv.onrender.com/api/user')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('User Data:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching user data:', error);
+                    });
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
