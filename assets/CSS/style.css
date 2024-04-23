@@ -110,19 +110,18 @@ width: 90px;
     background-color: var(--primary-color);
     margin-right: -250px;
     cursor: pointer;
+    border-radius: 5px;
+    border: 0;
+    text-decoration: none;
+    color: white;
+  }
+  .login_button:hover {
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
     transition: all .3s ease-in;
     font-weight: 700;
   }
-  /* .login_button:hover {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    transition: all .3s ease-in;
-    font-weight: 700;
-  } */
   
   .farmie {
     font-size: 23px;
