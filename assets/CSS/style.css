@@ -439,10 +439,9 @@ p {
 
 /* Dropdown Button */
 .user-dropdown-btn {
-  background-color: #4CAF50;
+  background-color: #eeeeee;
   color: white;
-  padding: 12px;
-  font-size: 16px;
+  padding: 2px;
   border: none;
   cursor: pointer;
 }
@@ -470,7 +469,10 @@ p {
   text-decoration: none;
   display: block;
 }
+.man{
+  width: 45px;
 
+}
 /* Change color of dropdown links on hover */
 .user-dropdown-content a:hover {
   background-color: #f1f1f1;
@@ -481,10 +483,6 @@ p {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.user-dropdown:hover .user-dropdown-btn {
-  background-color: #3e8e41;
-}
 
 
 
