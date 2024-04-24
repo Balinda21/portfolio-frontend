@@ -6,7 +6,7 @@
     <title>Portfolio</title>
   
     <link rel="stylesheet" href="./assets/CSS/style.css">
-    <link rel="stylesheet" href="./assets/CSS/about.css">
+    <link rel="stylesheet" href="./assets/CSS/contact.css">
     <link rel="stylesheet" href="./assets/CSS/blogs.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
@@ -14,46 +14,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-    <div>
+    <div class="">  
         <header>
-            <h3 class="farmie">
-              <span class="far">Mau</span>rice.
-            </h3>
-            <nav class="nav">   
-                <a href="./index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="projects.html">Projects</a>
-                <a href="blogs.html">Blog</a>
-                <a href="contact.html">Contact</a>
-                 <div class="dropdown" id="dropdown" > 
+          <h3 class="farmie">
+            <span class="far">Mau</span>rice.
+          </h3>
+          <nav class="nav">   
+            <a href="./index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="blogs.html">Blog</a>
+            <a href="contact.html">Contact</a>
+             <div class="dropdown" id="dropdown" > 
+          </div>
+          </nav>      
+          <!-- <div id="logger">
+              
+          </div>          -->
+      
+      
+          <div class="user-dropdown" id="user-dropdown">
+              <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
+              <div id="user-dropdown-content" class="user-dropdown-content">
+                  <a href="profile.html">Edit Profile</a>
+                  <a id="logger"></a>
               </div>
-              </nav>   
-            <!-- <div id="logger">
-                
-            </div>-->
-
-            <div class="user-dropdown" id="user-dropdown">
-                <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
-                <div id="user-dropdown-content" class="user-dropdown-content">
-                    <a href="profile.html">Edit Profile</a>
-                    <a id="logger"></a>
-                </div>
-            </div>
-            <button id="nav-toggle" class="nav-btn">
-              <i class="fa fa-bars"></i>
-            </button>
-
-           
-            
-          </header>
+          </div>
+      
+          <button id="nav-toggle" class="nav-btn">
+            <i class="fa fa-bars"></i>
+          </button>
+      
+         
+          
+        </header>
       </div>
-      <!--Hero section-->
+      
       <div class="heroo_section">      
         <span>BLOGS</span>
-      
-      
-         </div>
-     
+      </div>
+       
       <div class="blog-cards-container" id="blog-cards-container">
         <!-- Blog cards will be dynamically generated here -->
     </div>
