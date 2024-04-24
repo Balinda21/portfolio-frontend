@@ -106,9 +106,9 @@ nav a.active {
   
   .login_button {
     /* padding: 12px 35px; */
-    width: 80px;
+    width: 90px;
     background-color: transparent;
-    color: var(--primary-color);
+    color: green;
     border: 2px solid var(--primary-color);
     transition: all .3s ease-in;
     font-weight: 700;
