@@ -760,14 +760,7 @@ p {
     nav a:hover {
       color: black;
     }
-    .login_button {
-      padding: 10px 20px;
-      background-color: transparent;
-      color: var(--primary-color);;
-      border: 2px solid var(--primary-color);
-      transition: all .3s ease-in;
-      margin-left: -85px;
-    }
+   
   .menu{
     display: block;
   }
