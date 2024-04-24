@@ -141,6 +141,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         signupForm.reset();
+
+// protecting the signup
+const cookieeeee = document.cookie.split("=")[1];
+console.log(cookieeeee);
+if (cookieeeee) {
+    window.location.href = "index.html";
+} 
     });
 });
 </script>
