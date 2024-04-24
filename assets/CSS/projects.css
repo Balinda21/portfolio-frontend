@@ -1,3 +1,21 @@
+.heroo_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #333;
+    padding: 150px 0;
+    overflow: hidden;
+    background-image: url(/assets/images/hero1.jpg);
+    background-size: cover; /* Adjusts the background image to cover the entire container */
+    background-position: center;
+  }
+  .heroo_section span{
+font-size: 30px;
+font-weight: bold;
+
+  }
+
 
 .projects-container {
     padding-top: 3rem;
