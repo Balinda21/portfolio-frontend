@@ -108,7 +108,7 @@ nav a.active {
     /* padding: 12px 35px; */
     width: 90px;
     background-color: transparent;
-    color: green;
+    color: var(--primary-color);;
     border: 2px solid var(--primary-color);
     transition: all .3s ease-in;
     font-weight: 700;
