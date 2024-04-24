@@ -108,15 +108,16 @@ nav a.active {
     /* padding: 12px 35px; */
     width: 90px;
     background-color: transparent;
-    color: var(--primary-color);;
+    color: #51af5b;
     border: 2px solid var(--primary-color);
     transition: all .3s ease-in;
-    font-weight: 700;
+    font-weight: 500;
     margin-right: -250px;
     
   }
   .login_button:hover {
-   
+   background-color: #51af5b;
+   color: white;
   }
   
   .farmie {
