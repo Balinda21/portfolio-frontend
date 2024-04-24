@@ -762,8 +762,10 @@ p {
     }
     .login_button {
       padding: 10px 20px;
-      background-color: green;
-      color: white;
+      background-color: transparent;
+      color: var(--primary-color);;
+      border: 2px solid var(--primary-color);
+      transition: all .3s ease-in;
       margin-left: -78px;
     }
   .menu{
