@@ -96,17 +96,17 @@ nav a.active {
   .message {
     margin-bottom: 10px;
     font-weight: bold;
-    color: red; /* Default color for error messages */
+    color: red; 
 }
 .success {
-    color: green; /* Green color for success messages */
+    color: green; 
 }
 
 
   
   .login_button {
     /* padding: 12px 35px; */
-width: 80px;
+    width: 80px;
     background-color: var(--primary-color);
     color: white;
     margin-right: -250px;

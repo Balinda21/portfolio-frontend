@@ -18,11 +18,11 @@
         <form id="edit-form">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <input type="text" id="user_name" placeholder="User Name">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <input type="email" id="user_email" placeholder="User Email">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
@@ -47,23 +47,25 @@
                 console.log('Name:', name);
                 console.log('Email:', email);
                 console.log('Password:', password);
-
-                // Fetch user data
-                fetch('https://portfolio-backend-xewv.onrender.com/api/user')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('User Data:', data);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching user data:', error);
-                    });
             });
+
+            // Fetch user data when the page loads
+            const cookie = document.cookie.split('jwt=')[1];
+            fetch('https://portfolio-backend-xewv.onrender.com/api/user', {
+                credentials: 'include',
+                headers: {
+                    "Authorization": `Bearer ${cookie}`
+                }
+            })
+            .then(response => response.json())
+            .then(user => {
+                console.log(user);
+                document.getElementById('user_name').value = user.username;
+                document.getElementById('user_email').value = user.email;
+            })
+            .catch(error => console.error('Error fetching user data:', error));
         });
+
     </script>
 </body>
 </html>
