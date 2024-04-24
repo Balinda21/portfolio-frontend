@@ -28,9 +28,19 @@
                  <div class="dropdown" id="dropdown" > 
               </div>
               </nav>    
-            <div id="logger">
+            <!-- <div id="logger">
                 
-            </div>         
+            </div>          -->
+            <div class="user-dropdown" id="user-dropdown">
+                <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="profile.html">Edit Profile</a>
+                    <a id="logger"></a>
+                </div>
+            </div>
+
+            
+
             <button id="nav-toggle" class="nav-btn">
               <i class="fa fa-bars"></i>
             </button>      
@@ -239,3 +249,26 @@
     
 </body>
 </html>
+ <!-- dropdowns -->
+
+ <script>
+    function toggleUserDropdown() {
+document.getElementById("user-dropdown-content").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+if (!event.target.matches('.user-dropdown-btn')) {
+    var dropdowns = document.getElementsByClassName("user-dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+    }
+}
+};
+
+</script>
+
