@@ -34,8 +34,7 @@
                 <div class="user-dropdown" id="user-dropdown">
                     <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
                     <div id="user-dropdown-content" class="user-dropdown-content">
-                        <a href="profile.html">Edit Profile</a>
-                        <a id="logger"></a>
+                        
                     </div>
                 </div>      
                 <button id="nav-toggle" class="nav-btn">
@@ -353,4 +352,28 @@ window.onclick = function(event) {
     }
 };
 
-    </script>
+</script>
+
+<!-- edit user profile -->
+<script>
+    const cookie = document.cookie.split('jwt=')[1];
+    const profile = document.getElementById('user-dropdown-content')
+
+            fetch('https://portfolio-backend-xewv.onrender.com/api/user', {
+                credentials: 'include',
+                headers: {
+                    "Authorization": `Bearer ${cookie}`
+                }
+            })
+            .then(response => response.json())
+            .then(user => {
+                console.log(user);
+                profile.innerHTML = `
+                <a href="profile.html?=${user._id}" >Edit Profile</a>
+                        <a id="logger"></a>
+                `
+
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+        
+</script>
