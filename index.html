@@ -300,12 +300,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const subscribeForm = document.querySelector('.subscribe-form');
-        // const messageDiv = document.getElementById('message');
+        const messageDiv = document.getElementById('message');
 
-// const showMessage = (message, color) => {
-//     messageDiv.textContent = message;
-//     messageDiv.style.color = color;
-// };
+const showMessage = (message, color) => {
+    messageDiv.textContent = message;
+    messageDiv.style.color = color;
+};
 
         subscribeForm.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent the default form submission behavior
@@ -324,7 +324,7 @@
 
                 if (response.ok) {
 
-                    oastify({
+                    toastify({
         text: message,
         backgroundColor: "green",
         duration: 3000 // Display for 3 seconds
