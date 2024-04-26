@@ -179,7 +179,7 @@ document.getElementById('editBlogId').value = blogId;
                   event.target.closest('.blog-card').remove();
                   showNotification('Blog deleted', 'green');
                 } else {
-                  showNotification('Failed', 'red');
+                  alert('Failed to delete blog. Please try again later.');
                 }
               } catch (error) {
                 console.error('Error deleting blog:', error);
