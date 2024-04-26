@@ -217,7 +217,7 @@
                             <input type="email" name="email" placeholder="Your Email Address" required>
                             <button type="submit">Subscribe</button>
                         </form>
-                        <div id="message" class="message"></div>
+                        <!-- <div id="message" class="message"></div> -->
                     </div>
                 </div>
                 <div class="copyright">
@@ -295,12 +295,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const subscribeForm = document.querySelector('.subscribe-form');
-        const messageDiv = document.getElementById('message');
+        // const messageDiv = document.getElementById('message');
 
-const showMessage = (message, color) => {
-    messageDiv.textContent = message;
-    messageDiv.style.color = color;
-};
+// const showMessage = (message, color) => {
+//     messageDiv.textContent = message;
+//     messageDiv.style.color = color;
+// };
 
         subscribeForm.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent the default form submission behavior
@@ -318,16 +318,28 @@ const showMessage = (message, color) => {
                 });
 
                 if (response.ok) {
-                    const message = await response.text();
-                    showMessage(message, 'green');
+                    // const message = await response.text();
+                    // showMessage(message, 'green');
+                    showNotification('Success', 'green');
                 } else {
-                    throw new Error('Failed to subscribe');
+                    showNotification('Failed', 'red');
+            console.error('Failed to subscribe.');
                 }
             } catch (error) {
-                console.error('Subscription error:', error);
-                 showMessage('An error occurred. Please try again later.', 'red'); // Show error message to the user
+                showNotification('Failed', 'red');
+                console.error('Error deleting user:', error);// Show error message to the user
             }
             subscribeForm.reset();
+            function showNotification(message, color) {
+    Toastify({
+        text: message,
+        backgroundColor: color,
+        duration: 2500, // 3 seconds
+        close: true,
+        gravity: "top",
+        position: "right",
+    }).showToast();
+}
         });
     });
 
