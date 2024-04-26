@@ -1,4 +1,7 @@
 /* Modal Styles */
+*{
+  font-family: 'Poppins', sans-serif;
+}
 .modal-wrapper {
     position: fixed;
     top: 0;
