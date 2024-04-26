@@ -13,27 +13,7 @@
     align-items: center;
     background-image: url(../images/hero1.jpg);
   }
-  .arrow {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    animation: bounce 1s infinite alternate;
-    z-index: 3; /* Ensure the arrow appears above other elements */
-}
-
-.arrow img {
-    width: 30px;
-    height: 30px;
-    transform: rotate(45deg);
-}
+  
   .modal-toggle {
     display: none;
   }
