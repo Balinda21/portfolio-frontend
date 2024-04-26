@@ -1,181 +1,160 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
-        <link rel="stylesheet" href="./assets/CSS/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    
-
-        
-    </head>
-    <body>
-        <div class="">
-            <header>
-                <h3 class="farmie">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="">
+        <header>
+            <h3 class="farmie">
                 <span class="far">Mau</span>rice.
-                </h3>
-                <nav class="nav">   
-                    <a href="./index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="blogs.html">Blog</a>
-                    <a href="contact.html">Contact</a>
-                    <div class="dropdown" id="dropdown" > 
+            </h3>
+            <nav class="nav">   
+                <a href="./index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown" id="dropdown"></div>
+            </nav>    
+            <div class="user-dropdown" id="user-dropdown">
+                <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
+                <div id="user-dropdown-content" class="user-dropdown-content">
+                    <a href="profile.html">Edit Profile</a>
+                    <a id="logger"></a>
                 </div>
-                </nav>    
-                <!-- <div id="logger">
-                    
-                </div>    -->
-                <div class="user-dropdown" id="user-dropdown">
-                    <button onclick="toggleUserDropdown()" class="user-dropdown-btn"> <img class="man" src="./assets/images/man.png" alt=""></i></button>
-                    <div id="user-dropdown-content" class="user-dropdown-content">
-                        <a href="profile.html">Edit Profile</a>
-                        <a id="logger"></a>
-                    </div>
-                </div>      
-                <button id="nav-toggle" class="nav-btn">
+            </div>      
+            <button id="nav-toggle" class="nav-btn">
                 <i class="fa fa-bars"></i>
-                </button>
-            </header>
-            
-        </div>
-        
-        
-        
-        <!--Hero section-->
-        <div class="hero_section">
-            <img src="./assets/images/portfolio.jpg" alt="Owner Image" class="hero_image">
-            <div class="hero_content">
-                <h1>Hello, I'm Maurice</h1>
-                <p>I'm a passionate developer from Rwanda, specializing in web development and design. I create beautiful, responsive websites that help businesses stand out online. With expertise in HTML, CSS, JavaScript</p>
-                <div class="hero-btns">
-                    <button class="hire-btn">Hire me</button>
-                    <a href="projects.html"><button class="portfolio-btn">Portfolio</button></a>
-                </div>
+            </button>
+        </header>
+    </div>
+    
+    <!-- Hero section -->
+    <div class="hero_section">
+        <img src="./assets/images/portfolio.jpg" alt="Owner Image" class="hero_image">
+        <div class="hero_content">
+            <h1>Hello, I'm Maurice</h1>
+            <p>I'm a passionate developer from Rwanda, specializing in web development and design. I create beautiful, responsive websites that help businesses stand out online. With expertise in HTML, CSS, JavaScript</p>
+            <div class="hero-btns">
+                <button class="hire-btn">Hire me</button>
+                <a href="projects.html"><button class="portfolio-btn">Portfolio</button></a>
             </div>
         </div>
-        <!--end of hero section-->
-        <div class="main-content">
-            <section class="personalize-section">
-                <div class="container">
-                    <h2 class="section-title">Crafting Your Vision</h2>
-                    <div class="features">
-                        <div class="feature">
-                            <img src="./assets/images/tailored.webp" alt="Feature Image">
-                            <h3 class="feature-title">Tailored Solutions</h3>
-                            <p class="feature-description">We create custom web solutions that perfectly fit your unique needs.</p>
-                        </div>
-                        <div class="feature">
-                            <img src="./assets/images/sleek.jpg" alt="Feature Image">
-                            <h3 class="feature-title">Sleek Designs</h3>
-                            <p class="feature-description">Our designs are sleek, modern, and optimized for user engagement.</p>
-                        </div>
-                        <div class="feature">
-                            <img src="./assets/images/development.jpg" alt="Feature Image">
-                            <h3 class="feature-title">Efficient Development</h3>
-                            <p class="feature-description"> we ensure timely delivery without compromising quality.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
+    </div>
+    <!-- End of hero section -->
 
-            
-            <div class="services-section">
-                <h2 class="section-title">Services</h2>
-                <div class="services-container">
-                    <div class="service-card">
-                        <img src="./assets/images/computer.png" alt="Web Development">
-                        <h3>Web Development</h3>
-                        <p>Creating responsive and user-friendly websites using the latest web technologies.</p>
+    <div class="main-content">
+        <section class="personalize-section">
+            <div class="container">
+                <h2 class="section-title">Crafting Your Vision</h2>
+                <div class="features">
+                    <div class="feature">
+                        <img src="./assets/images/tailored.webp" alt="Feature Image">
+                        <h3 class="feature-title">Tailored Solutions</h3>
+                        <p class="feature-description">We create custom web solutions that perfectly fit your unique needs.</p>
                     </div>
-                    <div class="service-card">
-                        <img src="./assets/images/ux.png" alt="Mobile App Development">
-                        <h3>Mobile App Development</h3>
-                        <p>Building native and cross-platform mobile applications for iOS and Android.</p>
+                    <div class="feature">
+                        <img src="./assets/images/sleek.jpg" alt="Feature Image">
+                        <h3 class="feature-title">Sleek Designs</h3>
+                        <p class="feature-description">Our designs are sleek, modern, and optimized for user engagement.</p>
                     </div>
-                    <div class="service-card">
-                        <img src="./assets/images/computer.png" alt="UI/UX Design">
-                        <h3>UI/UX Design</h3>
-                        <p>Designing intuitive and visually appealing user interfaces for digital products.</p>
+                    <div class="feature">
+                        <img src="./assets/images/development.jpg" alt="Feature Image">
+                        <h3 class="feature-title">Efficient Development</h3>
+                        <p class="feature-description"> we ensure timely delivery without compromising quality.</p>
                     </div>
-                    <!-- Add more service cards as needed -->
                 </div>
             </div>
-            
+        </section>
 
-            <!-- testimonial -->
-            <div class="testimonial-holder">
-                <h3 class="section-title">CLIENTS SAY ABOUT US?</h3>
-                <div class="testimonials-container">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p> Working with Maurice was an absolute pleasure. His attention to detail and creativity in designing our website surpassed our expectations.</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="./assets/images/woman.jpg" alt="Angel Balinda">
-                            <div class="author-details">
-                                <h4>Boris </h4>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>We were on a tight deadline to launch our product, and Maurice came through for us in a big way. His proficiency in web development</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="./assets/images/woman.jpg" alt="Angel Balinda">
-                            <div class="author-details">
-                                <h4>Annet</h4>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>We were on a tight deadline to launch our product, and Maurice came through for us in a big way. His proficiency in web development</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="./assets/images/woman.jpg" alt="Angel Balinda">
-                            <div class="author-details">
-                                <h4>Chanella</h4>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Repeat the above div for each testimonial -->
+        <div class="services-section">
+            <h2 class="section-title">Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <img src="./assets/images/computer.png" alt="Web Development">
+                    <h3>Web Development</h3>
+                    <p>Creating responsive and user-friendly websites using the latest web technologies.</p>
+                </div>
+                <div class="service-card">
+                    <img src="./assets/images/ux.png" alt="Mobile App Development">
+                    <h3>Mobile App Development</h3>
+                    <p>Building native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+                <div class="service-card">
+                    <img src="./assets/images/computer.png" alt="UI/UX Design">
+                    <h3>UI/UX Design</h3>
+                    <p>Designing intuitive and visually appealing user interfaces for digital products.</p>
                 </div>
             </div>
-            
-            
+        </div>
+
+        <!-- Testimonial -->
+        <div class="testimonial-holder">
+            <h3 class="section-title">CLIENTS SAY ABOUT US?</h3>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Working with Maurice was an absolute pleasure. His attention to detail and creativity in designing our website surpassed our expectations.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/woman.jpg" alt="Angel Balinda">
+                        <div class="author-details">
+                            <h4>Boris</h4>
+                            <span>Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>We were on a tight deadline to launch our product, and Maurice came through for us in a big way. His proficiency in web development</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/woman.jpg" alt="Angel Balinda">
+                        <div class="author-details">
+                            <h4>Annet</h4>
+                            <span>Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>We were on a tight deadline to launch our product, and Maurice came through for us in a big way. His proficiency in web development</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/woman.jpg" alt="Angel Balinda">
+                        <div class="author-details">
+                            <h4>Chanella</h4>
+                            <span>Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="scroll-to-top">
             <a href="#" class="scroll-btn">
-            <i class="fa fa-arrow-up"></i>
+                <i class="fa fa-arrow-up"></i>
             </a>
         </div>
-        <!-- footer -->
+        <!-- Footer -->
         <div class="footer container">
             <div class="footer-content">
                 <div class="footer-row">
                     <div class="readit">
                         <div class="title">
-                            <h4 class="mark">
-                                Maurice<span>dev</span>.
-                            </h4>
+                            <h4 class="mark">Maurice<span>dev</span>.</h4>
                         </div>
                         <div class="readit-body">
-                            <p>
-                                services such as web and mobile app development, UI/UX design, and database management.we ensure businesses have efficient, user-friendly solutions tailored to their needs."
-                            </p>
+                            <p>services such as web and mobile app development, UI/UX design, and database management.we ensure businesses have efficient, user-friendly solutions tailored to their needs.</p>
                         </div>
                         <div class="readit-footer">
                             <div class="f-social-icons">
@@ -202,7 +181,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="latest-news">
                         <div class="title">
@@ -230,60 +208,52 @@
                         Copyright ©2024 All rights reserved | This Website is made by
                         Balinda Maurice
                     </p>
-                    
                 </div> 
-                </div>
-                
             </div>
         </div>
-        
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var navToggle = document.getElementById("nav-toggle");
-                var navMenu = document.querySelector(".nav");
-        
-                navToggle.addEventListener("click", function() {
-                    navMenu.classList.toggle("active");
-                });
-            });
-            
-        </script>
-
+    </div>
+    
     <script>
-    const admin = document.getElementById("dropdown")
-    const loggContext = document.getElementById("logger")
+        document.addEventListener("DOMContentLoaded", function() {
+            var navToggle = document.getElementById("nav-toggle");
+            var navMenu = document.querySelector(".nav");
 
+            navToggle.addEventListener("click", function() {
+                navMenu.classList.toggle("active");
+            });
+        });
+        
+        const admin = document.getElementById("dropdown")
+        const loggContext = document.getElementById("logger")
 
-
-    const updateUserUi = (user) => {
+        const updateUserUi = (user) => {
             if (user && user.name) {
                 if (user.isAdmin === true) {
                     admin.innerHTML = `
-            <li onclick="toggleDropdown()" class="dropbtn">Admin</li>
-                    <div id="dropdown-menu" class="dropdown-content">
-                        <a href="admindashboard.html">Dashboard</a>
-                    </div>`
+                        <li onclick="toggleDropdown()" class="dropbtn">Admin</li>
+                        <div id="dropdown-menu" class="dropdown-content">
+                            <a href="admindashboard.html">Dashboard</a>
+                        </div>`
                 } else {
                     admin.innerHTML = '';
                 }
                 loggContext.innerHTML = ` 
-        <a href="/logout" id="logout" class="login_button">Logout</a>
-        `
+                    <a href="/logout" id="logout" class="login_button">Logout</a>
+                `
             } else {
                 loggContext.innerHTML = `
-        <a href="login.html" id="login-btn" class="login_button">Login</a>
-
-        `
+                    <a href="login.html" id="login-btn" class="login_button">Login</a>
+                `
                 admin.innerHTML = ''; 
             }
         };
 
-    fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
-    .then(res => res.json())
-    .then(data => {updateUserUi(data)})
-    .catch(error => console.log(error))
+        fetch('https://portfolio-backend-xewv.onrender.com/api/user', {credentials:"include", headers:{"Authorization": `Bearer ${document.cookie.split('jwt=')[1]}`} })
+            .then(res => res.json())
+            .then(data => {updateUserUi(data)})
+            .catch(error => console.log(error))
 
-    document.addEventListener('click', async (e) => {
+        document.addEventListener('click', async (e) => {
             if (e.target.id === 'logout') {
                 e.preventDefault();
                 updateUserUi(null)
@@ -294,56 +264,67 @@
             }
         });
 
-
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        const subscribeForm = document.querySelector('.subscribe-form');
-        const messageDiv = document.getElementById('message');
-
-const showMessage = (message, color) => {
-    messageDiv.textContent = message;
-    messageDiv.style.color = color;
-};
-
-subscribeForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-
-    const formData = new FormData(subscribeForm); // Create FormData object from the form
-    const email = formData.get('email'); // Get the email from the form data
-
-    try {
-        const response = await fetch('https://portfolio-backend-xewv.onrender.com/subscribe', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email }) // Send email data as JSON to the server
-        });
-
-        if (response.ok) {
-            Toastify({
-                text: "Subscription successful!",
-                backgroundColor: "green",
-                duration: 3000 // Display for 3 seconds
-            }).showToast();
-        } else {
-            throw new Error('Failed to subscribe');
+        function toggleUserDropdown() {
+            document.getElementById("user-dropdown-content").classList.toggle("show");
         }
-    } catch (error) {
-        console.error('Subscription error:', error);
-        Toastify({
-            text: 'An error occurred. Please try again later.',
-            backgroundColor: "red",
-            duration: 3000 // Display for 3 seconds
-        }).showToast(); // Show error message to the user
-    }
-    subscribeForm.reset();
-});
 
-    });
+        window.onclick = function(event) {
+            if (!event.target.matches('.user-dropdown-btn')) {
+                var dropdowns = document.getElementsByClassName("user-dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        };
 
+        document.addEventListener('DOMContentLoaded', () => {
+            const subscribeForm = document.querySelector('.subscribe-form');
+            const messageDiv = document.getElementById('message');
+
+            const showMessage = (message, color) => {
+                messageDiv.textContent = message;
+                messageDiv.style.color = color;
+            };
+
+            subscribeForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                const formData = new FormData(subscribeForm); // Create FormData object from the form
+                const email = formData.get('email'); // Get the email from the form data
+
+                try {
+                    const response = await fetch('https://portfolio-backend-xewv.onrender.com/subscribe', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email }) // Send email data as JSON to the server
+                    });
+
+                    if (response.ok) {
+                        Toastify({
+                            text: "Subscription successful!",
+                            backgroundColor: "green",
+                            duration: 3000 // Display for 3 seconds
+                        }).showToast();
+                    } else {
+                        throw new Error('Failed to subscribe');
+                    }
+                } catch (error) {
+                    console.error('Subscription error:', error);
+                    Toastify({
+                        text: 'An error occurred. Please try again later.',
+                        backgroundColor: "red",
+                        duration: 3000 // Display for 3 seconds
+                    }).showToast(); // Show error message to the user
+                }
+                subscribeForm.reset();
+            });
+        });
     </script>
     <script>
         function toggleUserDropdown() {
