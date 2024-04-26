@@ -222,7 +222,7 @@
                             <input type="email" name="email" placeholder="Your Email Address" required>
                             <button type="submit">Subscribe</button>
                         </form>
-                        <!-- <div id="message" class="message"></div> -->
+                        <div id="message" class="message"></div>
                     </div>
                 </div>
                 <div class="copyright">
@@ -307,43 +307,41 @@ const showMessage = (message, color) => {
     messageDiv.style.color = color;
 };
 
-        subscribeForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent the default form submission behavior
+subscribeForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-            const formData = new FormData(subscribeForm); // Create FData object from the form
-            const email = formData.get('email'); // Get the email from the form data
+    const formData = new FormData(subscribeForm); // Create FormData object from the form
+    const email = formData.get('email'); // Get the email from the form data
 
-            try {
-                const response = await fetch('https://portfolio-backend-xewv.onrender.com/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email }) // Send email data as JSON to the server
-                });
-
-                if (response.ok) {
-
-                    toastify({
-        text: message,
-        backgroundColor: "green",
-        duration: 3000 // Display for 3 seconds
-    }).showToast();
-
-
-                } else {
-                    throw new Error('Failed to subscribe');
-                }
-            } catch (error) {
-                console.error('Subscription error:', error);
-                Toastify({
-    text: 'An error occurred. Please try again later.',
-    backgroundColor: "red",
-    duration: 3000 // Display for 3 seconds
-}).showToast();; // Show error message to the user
-            }
-            subscribeForm.reset();
+    try {
+        const response = await fetch('https://portfolio-backend-xewv.onrender.com/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email }) // Send email data as JSON to the server
         });
+
+        if (response.ok) {
+            Toastify({
+                text: "Subscription successful!",
+                backgroundColor: "green",
+                duration: 3000 // Display for 3 seconds
+            }).showToast();
+        } else {
+            throw new Error('Failed to subscribe');
+        }
+    } catch (error) {
+        console.error('Subscription error:', error);
+        Toastify({
+            text: 'An error occurred. Please try again later.',
+            backgroundColor: "red",
+            duration: 3000 // Display for 3 seconds
+        }).showToast(); // Show error message to the user
+    }
+    subscribeForm.reset();
+});
+
     });
 
     </script>
